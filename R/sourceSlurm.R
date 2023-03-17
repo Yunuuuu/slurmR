@@ -78,7 +78,9 @@ sourceSlurm <- function(
 
   file        <- normalizePath(file)
   script_path <- gsub("\\.(r|R)$", ".\\1.sh", basename(file))
-  script_path <- normalizePath(file.path(tmp_path, script_path))
+  script_path <- normalizePath(file.path(tmp_path, script_path), 
+    mustWork = FALSE
+  )
 
   x <- new_bash(
     filename = script_path,
